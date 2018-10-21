@@ -1,3 +1,4 @@
 .vscode/
 Settings.py
 __pycache__
+*-reqlist.txt

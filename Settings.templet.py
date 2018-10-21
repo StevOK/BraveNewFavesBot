@@ -4,3 +4,4 @@ PASS = "" # your Twitch OAuth token
 	  # Redacted so no one hijacks my bot
 IDENT = "bravenewfavesbot"  # Twitch username you're using for your bot
 CHANNEL = "kathleen_lrr"   # Channel
+ADMIN = ""	# User with access to bot

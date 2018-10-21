@@ -5,7 +5,7 @@ import string
 from Read import getUser, getMessage
 from Socket import openSocket, sendMessage
 from Initialize import joinRoom
-from Settings import IDENT, CHANNEL
+from Settings import IDENT, CHANNEL, ADMIN
 import datetime
 
 #This will open up a socket and print a nice message to the chat saying the bot is working
@@ -65,7 +65,7 @@ while True:
 			
 			#Once you select a song to be played, type !nowplaying X into the chat, where X is the number
 			# listed before the request in the bot's chat / the reqlist file. This needs some better error checking.
-			if ("kathleen_lrr" in user or "freshprinceofbeleren" in user) and "!nowplaying" in message:
+			if ("kathleen_lrr" in user or ADMIN in user) and "!nowplaying" in message:
 				index = int(message[11:])-1
 				if (index >= 0 and index < len(lst)):
 					playedlst.append(lst[index])
@@ -80,7 +80,7 @@ while True:
 			#For now I have my username in here too since I'm the one who is running the code,
 			# but I will remove it once Kathleen takes over.
 			#I used this format for the command to mirror commands in other popular chat bots.
-			if ("kathleen_lrr" in user or "freshprinceofbeleren" in user) and "!printlist" in message:
+			if ("kathleen_lrr" in user or ADMIN in user) and "!printlist" in message:
 				f=open(reqlist, 'w')
 				for line in lst:
 					f.write("%s\n\n" % line)
@@ -91,7 +91,7 @@ while True:
 			# the list of songs played to an output file every time. It writes over older versions of 
 			# the file, but since the list keeps older items in the queue between printings, it's like 
 			# adding to the file.
-			if ("kathleen_lrr" in user or "freshprinceofbeleren" in user) and "!printplaylist" in message:
+			if ("kathleen_lrr" in user or ADMIN in user) and "!printplaylist" in message:
 				f=open(playlist, 'w')
 				for line in playedlst:
 					f.write("%s\n\n" % line)

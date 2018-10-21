@@ -5,6 +5,7 @@ import string
 from Read import getUser, getMessage
 from Socket import openSocket, sendMessage
 from Initialize import joinRoom
+from Settings import IDENT, CHANNEL
 import datetime
 
 #This will open up a socket and print a nice message to the chat saying the bot is working
@@ -48,14 +49,14 @@ while True:
 			#I added a counter to make it easier to tell which request is being played and so we 
 			# can easily access it in the list later. Ultimately we will want the bot to print the 
 			# request currently playing, so I don't want the bot to pick up its own messages.
-			if ("youtube.com" in message or "youtu.be" in message) and ("bravenewfavesbot" not in user):
+			if ("youtube.com" in message or "youtu.be" in message) and (IDENT not in user):
 				#Add the post to the list
 				reqcount = reqcount + 1
 				lst.append(str(reqcount) + ": " + user + ": " + message)
 				#Add the post to the bot's chat. Might make this its own function at some point,
 				# especially since it should print to whatever the bot's name is rather than this
 				# bot specifically.
-				messageTemp = "PRIVMSG #" + "bravenewfavesbot" + " :" + str(reqcount) + ": " + user + ": " + message
+				messageTemp = "PRIVMSG #" + IDENT + " :" + str(reqcount) + ": " + user + ": " + message
 				s.send("{}\r\n".format(messageTemp).encode("utf-8"))
 				break
 				
